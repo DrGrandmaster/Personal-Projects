@@ -7,7 +7,7 @@ Q = 1e3;
 N = parallel.pool.Constant(1:100);
 lengthN = length(N.Value);
 
-% Q=1e3 times lengthN=100 takes 6.3 sec to run w/ R7 5800X, keep in mind
+% Q=1e3 times length N=100 takes 6.3 sec to run w/ R7 5800X, keep in mind
 
 % Vector for exp results
 j = zeros(Q,length(N.Value));
