@@ -4,10 +4,10 @@
 Q = 1e3;
 
 % Number of lilypads
-N = parallel.pool.Constant(1:100);
+N = parallel.pool.Constant(1:500);
 lengthN = length(N.Value);
 
-% Q=1e3 times length N=100 takes 6.3 sec to run w/ R7 5800X, keep in mind
+% Q=1e3 with length N=500 takes 2.2 sec to run in parallel w/ R7 5800X, keep in mind
 
 % Vector for exp results
 j = zeros(Q,length(N.Value));
