@@ -1,6 +1,6 @@
 /* 
 Video Sync Generator
-Generates Sync Signals for driving a RGBHV input CRT
+Generates Sync Signals for driving a RGBHV input CRT.
 !NOTE! As written, 0,0 is the top left corner of the display area, NOT the beginning of the raster.
 */
 

@@ -4,7 +4,6 @@
 /*
 Bitmap Digit Renderer
 Contains 5x5 bitmaps for digits 0-9.
-Losely inspired by Tom7's FixederSys x1.
 */
 
 module digits(
