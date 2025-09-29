@@ -1,10 +1,10 @@
 %% This script simulates the "Frog Problem"
 
 % Number of simulations
-Q = 1e3;
+Q = 5e4;
 
 % Number of lilypads
-N = parallel.pool.Constant(1:500);
+N = parallel.pool.Constant(1:250);
 lengthN = length(N.Value);
 
 % Q=1e3 with length N=500 takes 2.2 sec to run in parallel w/ R7 5800X, keep in mind
@@ -55,3 +55,4 @@ hold on;
 plot(harmonic(1:length(avgJ)));
 legend(["Average Number of Jumps" "Expected Number of Jumps"], 'Location', 'northwest');
 hold off;
+grid on;
