@@ -11,11 +11,10 @@ module fixed_freq_pwm
 
 input clk;
 input reset;
-
 input enable;
+
 input [BITS-1:0] duty;
 
-wire countRST;
 reg [BITS-1:0] count;
 
 output reg pwm;
