@@ -14,6 +14,11 @@ module ball_top
     localparam H_VEL_INIT = 3;
     localparam V_VEL_INIT = 4;
 
+    localparam MIN_X = 0;
+    localparam MIN_Y = 0;
+    localparam MAX_X = 256;
+    localparam MAX_Y = 240;
+
     input clk;
     input reset;
 
@@ -47,10 +52,10 @@ module ball_top
         ball_v_vel = V_VEL_INIT;
     end
 
-    wire ball_h_coll = ball_hpos >= 256 - SIZE; // hard coded to display size -- not great, as it doesn't allow for differing resolutions
-    wire ball_v_coll = ball_vpos >= 240 - SIZE;
+    wire ball_h_coll = ball_hpos >= MAX_X - SIZE;
+    wire ball_v_coll = ball_vpos >= MAX_Y - SIZE;
 
-    always @(posedge vsync or posedge reset) begin
+    always @(posedge vsync) begin
 
         if(reset) begin
             ball_hpos <= H_POS_INIT;
@@ -62,13 +67,16 @@ module ball_top
         
     end
 
-    always @(posedge ball_h_coll or posedge reset)
+    always @(posedge ball_h_coll)
         ball_h_vel <= reset ? H_VEL_INIT : -ball_h_vel; // to initial if reset true, invert if reset false
-    always @(posedge ball_v_coll or posedge reset)
+
+    always @(posedge ball_v_coll)
         ball_v_vel <= reset ? V_VEL_INIT : -ball_v_vel;
 
-    wire ball_draw = (hpos - ball_hpos < SIZE) && (vpos - ball_vpos < SIZE);
+    wire ball_draw = ((hpos - ball_hpos < SIZE) && (vpos - ball_vpos < SIZE)) && display_on;
 
-    assign rgb = {ball_draw, ball_draw, ball_draw};
+    wire border_draw = ((hpos == MIN_X) || (hpos == MAX_X - 1) || (vpos == MIN_Y || vpos == MAX_Y - 1)) && display_on;
+
+    assign rgb = {ball_draw || border_draw, ball_draw || border_draw, ball_draw || border_draw};
 
 endmodule
