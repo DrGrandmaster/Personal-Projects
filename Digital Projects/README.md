@@ -1,4 +1,4 @@
 
-# HDL Video Game Hardware
+# Digital Projects
 
-This project implements various video game hardware using Verilog HDL based on *Designing Video Game Hardware in Verilog* by Steven Hugg.
+This contains all manner of digital projects.
